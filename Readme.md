@@ -1,0 +1,181 @@
+# Tales of wicked forest — PyGame Zero - 2D Platformer Demo
+
+Enchanted Forest is an educational 2D platformer game built with **Python + pgzero**.  
+The project demonstrates game loop architecture, physics simulation, sprite animation, and procedural level design.
+
+> **⚠️ Disclaimer**  
+> This game is intended **for educational and learning purposes only**.  
+> It is a student project demonstrating Python game development concepts.
+
+---
+
+## 🎯 Features
+
+- **Physics-based platformer**
+  - Gravity, jump velocity, and collision detection implemented from scratch.
+  - Smooth camera tracking with snap-follow system.
+
+- **Enemy**
+  - Patrol-based movement with configurable speed and boundaries.
+  - Hit detection, HP system, and damage flash effect.
+
+- **PgZero desktop game**
+  - Sprite animation (idle / run cycles for player and enemies).
+  - Parallax background scrolling.
+  - Animated goal portal (fallback if sprite missing).
+
+- **Modular architecture**
+  - Clear separation of:
+    - `game.py` – main game loop, states, rendering.
+    - `player.py` – player physics, animation, attack logic.
+    - `enemy.py` – basic logic, animation, HP system.
+    - `map.py` – platforms, walls, chasms, enemy spawn data.
+
+- **7-section map (8750px)**
+  - Multiple difficulty zones from tutorial to final tower.
+  - Chasms, walls, multi-level platforms, narrow islands.
+
+---
+
+## 📁 Project Structure
+
+```text
+enchanted-forest/
+├── game.py              # Main game loop, states, camera, rendering
+├── player.py            # Player class (physics, animation, attack)
+├── enemy.py             # Enemy class (basic logic , HP, animation)
+├── map.py               # Map layout (platforms, walls, enemies, goal)
+├── README.md            # Project documentation
+│
+├── images/              # Sprite assets (PNG)
+│   ├── hero_idle_1.png ... hero_idle_3.png
+│   ├── hero_run_1.png  ... hero_run_4.png
+│   ├── enemy_idle_1.png, enemy_idle_2.png
+│   ├── enemy_run_1.png,  enemy_run_2.png
+│   └── bg_forest.png
+│
+└── sounds/              
+    ├── bg_music.mp3
+    ├── hit.wav
+    └── win.wav
+```
+
+---
+
+## 🛠️ Technology Stack
+
+- **Language & runtime**
+  - Python 3.10+
+
+- **Game framework**
+  - [pgzero](https://pygame-zero.readthedocs.io/) – simplified Pygame wrapper
+  - [pygame](https://www.pygame.org/) – underlying rendering and input
+
+
+
+---
+
+## 🚀 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/enchanted-forest.git
+cd enchanted-forest
+```
+
+### 2. Create and activate virtual environment (recommended)
+
+```bash
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# Linux / macOS
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r  requirements.txt
+```
+
+---
+
+## ▶️ Running the Game
+
+From the project root:
+
+```bash
+python game.py
+```
+
+### Application Flow
+
+1. **Main Menu**
+   - Start game, toggle music, exit.
+   - Navigable via keyboard (`↑` `↓` `ENTER`) or mouse.
+
+2. **Game**
+   - Side-scrolling platformer across 7 sections.
+   - Defeat enemies, avoid chasms, reach the **GOAL** portal.
+
+3. **End Screen**
+   - Displayed on win or death.
+   - Press `ENTER` to return to menu.
+
+---
+
+## 🎮 Controls
+
+| Key | Action |
+|---|---|
+| `←` / `→` or `A` / `D` | Move left / right |
+| `↑` / `W` / `SPACE` | Jump |
+| `X` | Attack |
+| `ESC` | Return to menu |
+| `ENTER` | Confirm in menu |
+
+---
+
+
+
+## ❤️ Game Mechanics
+
+- Player has **5 HP** — lost on contact with enemies
+- Enemies have **3 HP** — defeated with attack (`X`)
+- **Invincibility frames** after taking damage (flashing effect, 70 frames)
+- **Chasms** — falling below the screen = instant death
+- Reaching the **GOAL portal** triggers the win screen
+- Enemy speed increases progressively: `2.0` → `4.0` px/frame in the final tower
+
+---
+
+
+
+
+
+
+## 📄 License
+
+This project is for educational purposes. Please check the repository for license details.
+
+---
+
+## ⚠️ Important Notes
+
+1. **Sprite assets are required**
+   - The game does not ship with character sprites
+   - Place your own `.png` files in the `images/` directory following the naming convention above
+
+2. **Audio is optional**
+   - All sound effects and music are caught silently if missing
+   - Game runs fully without any audio files
+
+3. **Resolution**
+   - Designed for 1920 × 1080 displays
+   - No dynamic scaling — may appear cropped on smaller screens
+
+---
